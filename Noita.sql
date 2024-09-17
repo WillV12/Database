@@ -1,7 +1,8 @@
+
 CREATE TABLE Noita
 (Game_seed NUMBER(10),
 Health NUMBER(3) NOT NULL,
-Stat_effect VARCHAR2(10),
+Status VARCHAR2(10),
     PRIMARY KEY(Game_seed)
 );
 INSERT INTO Noita
@@ -17,32 +18,29 @@ VALUES(1065836792, 255, 'none');
 
 
 
-/*
-Table creates, but data won't append to the table :(
-*/
 CREATE TABLE Wand
-(Wand_ID NUMBER(12),
-Game_seed NUMBER(12),
-Shuffle NUMBER(1),
-#_Slots NUMBER(4),
-Max_mana NUMBER(6),
-Mana_recharge_speed NUMBER(6),
-Recharge_speed NUMBER(4, 3),
-Spell_id NUMBER(7),
+(Wand_ID NUMBER(10),
+Game_seed NUMBER(10),
+Shuffle BOOLEAN,
+Num_Slots NUMBER(2),
+Max_mana NUMBER(4),
+Mana_recharge_speed NUMBER(4),
+Recharge_speed NUMBER(3, 2),
+Spell_id number(5),
     PRIMARY KEY(Wand_ID),
     FOREIGN KEY(Game_seed) REFERENCES Noita(Game_seed),
-    FOREIGN KEY(Spell_id) REFERENCES Spell_item(Spell_id) -- Didn't have references
+    FOREIGN KEY(Spell_id) REFERENCES Spell_item(Spell_id)
 );
 INSERT INTO Wand
-VALUES(3820785617, 1081678920, 1, 7, 330, 650, 2.82, 83754);
+VALUES(3820785617,1081678920, 1, 7, 330, 650, 2.82, 83754);
 INSERT INTO Wand
-VALUES(1092873657, 6927562971, 0, 5, 700, 200, .92, 29832);
+VALUES(1092873657, 6927562971, 0, 5, 700, 200, 0.92, 29832);
 INSERT INTO Wand
-VALUES(1984672896, 8352619836, 0, 16, 1200, 3000, .11, 92683);
+VALUES(1984672896, 8352619836, 0, 16, 1200, 3000, 0.11, 92683);
 INSERT INTO Wand
 VALUES(2947583902, 8390765108, 1, 10, 780, 38, 1.82, 67328);
 INSERT INTO Wand
-VALUES(2819027823, 1065836792, 1, 8, 250, 110, .87, 89267);
+VALUES(2819027823, 1065836792, 1, 8, 250, 110, 0.87, 89267);
 
 CREATE TABLE Spell_item
 (
